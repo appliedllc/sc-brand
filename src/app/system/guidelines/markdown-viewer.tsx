@@ -10,6 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { getMarkdownFile } from "./actions";
@@ -54,53 +55,51 @@ export function MarkdownViewer({ filename, label }: MarkdownViewerProps) {
   return (
     <Dialog onOpenChange={(open) => open && loadContent()}>
       <DialogTrigger asChild>
-        import {
-          Dialog,
-          DialogContent,
-          DialogHeader,
-          DialogTitle,
-          DialogTrigger,
-          DialogFooter,
-        } from "@/components/ui/dialog";
-        ...
-              <DialogContent className="max-h-[85vh] max-w-3xl overflow-hidden p-0 flex flex-col">
-                <DialogHeader className="border-b border-border px-6 py-4 shrink-0">
-                  <DialogTitle className="font-display text-lg">{filename}</DialogTitle>
-                </DialogHeader>
-                <div className="flex-1 overflow-y-auto p-6">
-                  {content === null ? (
-                    <div className="flex h-40 items-center justify-center text-sm text-muted-foreground italic">
-                      Loading content...
-                    </div>
-                  ) : (
-                    <pre className="font-mono text-[13px] leading-relaxed whitespace-pre-wrap break-words text-foreground selection:bg-primary/20">
-                      {content}
-                    </pre>
-                  )}
-                </div>
-                <DialogFooter className="border-t border-border px-6 py-4 flex items-center justify-end gap-2 bg-muted/30 shrink-0">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={handleCopy}
-                    className="h-9 gap-1.5 px-3 text-sm"
-                  >
-                    {copied ? (
-                      <CheckIcon className="size-4" />
-                    ) : (
-                      <CopyIcon className="size-4" />
-                    )}
-                    {copied ? "Copied" : "Copy to clipboard"}
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={handleDownload}
-                    className="h-9 gap-1.5 px-3 text-sm"
-                  >
-                    <DownloadIcon className="size-4" />
-                    Download .md
-                  </Button>
-                </DialogFooter>
-              </DialogContent>
-
+        <Button variant="secondary" size="sm" className="gap-2">
+          <FileTextIcon className="size-3.5" />
+          {label}
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="max-h-[85vh] max-w-3xl overflow-hidden p-0 flex flex-col">
+        <DialogHeader className="border-b border-border px-6 py-4 shrink-0">
+          <DialogTitle className="font-display text-lg">{filename}</DialogTitle>
+        </DialogHeader>
+        <div className="flex-1 overflow-y-auto p-6">
+          {content === null ? (
+            <div className="flex h-40 items-center justify-center text-sm text-muted-foreground italic">
+              Loading content...
+            </div>
+          ) : (
+            <pre className="font-mono text-[13px] leading-relaxed whitespace-pre-wrap break-words text-foreground selection:bg-primary/20">
+              {content}
+            </pre>
+          )}
+        </div>
+        <DialogFooter className="border-t border-border px-6 py-4 flex items-center justify-end gap-2 bg-muted/30 shrink-0">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleCopy}
+            className="h-9 gap-1.5 px-3 text-sm"
+          >
+            {copied ? (
+              <CheckIcon className="size-4" />
+            ) : (
+              <CopyIcon className="size-4" />
+            )}
+            {copied ? "Copied" : "Copy to clipboard"}
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleDownload}
+            className="h-9 gap-1.5 px-3 text-sm"
+          >
+            <DownloadIcon className="size-4" />
+            Download .md
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
