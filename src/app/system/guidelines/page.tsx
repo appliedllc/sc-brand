@@ -1,7 +1,15 @@
-import { PageHeader } from "@/components/system/section";
+import { PageHeader, Section } from "@/components/system/section";
 import { BrandLogo } from "@/components/system/brand-logo";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { MarkdownViewer } from "./markdown-viewer";
+
+const docs = [
+  { filename: "PRODUCT.md", label: "Product Context" },
+  { filename: "DESIGN.md", label: "Design System" },
+  { filename: "AGENTS.md", label: "Agent Instructions" },
+  { filename: "FIGMA-DS.md", label: "Figma Parity" },
+];
 
 const dos = [
   {
@@ -180,6 +188,14 @@ export default function GuidelinesPage() {
         title="Guidelines"
         subtitle="Reflex rules. When in doubt, look here before generating."
       />
+
+      <Section label="Internal references">
+        <div className="flex flex-wrap gap-3">
+          {docs.map((doc) => (
+            <MarkdownViewer key={doc.filename} {...doc} />
+          ))}
+        </div>
+      </Section>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
         <div className="flex flex-col gap-3">
