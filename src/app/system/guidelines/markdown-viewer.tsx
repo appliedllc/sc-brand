@@ -55,7 +55,7 @@ export function MarkdownViewer({ filename, label }: MarkdownViewerProps) {
   return (
     <Dialog onOpenChange={(open) => open && loadContent()}>
       <DialogTrigger asChild>
-        <Button variant="secondary" size="sm" className="gap-2">
+        <Button variant="outline" size="sm" className="gap-2">
           <FileTextIcon className="size-3.5" />
           {label}
         </Button>
@@ -80,7 +80,7 @@ export function MarkdownViewer({ filename, label }: MarkdownViewerProps) {
             variant="outline"
             size="sm"
             onClick={handleCopy}
-            className="h-9 gap-1.5 px-3 text-sm"
+            className="h-9 flex-1 gap-1.5 px-3 text-sm"
           >
             {copied ? (
               <CheckIcon className="size-4" />
@@ -93,7 +93,7 @@ export function MarkdownViewer({ filename, label }: MarkdownViewerProps) {
             variant="outline"
             size="sm"
             onClick={handleDownload}
-            className="h-9 gap-1.5 px-3 text-sm"
+            className="h-9 flex-1 gap-1.5 px-3 text-sm"
           >
             <DownloadIcon className="size-4" />
             Download .md

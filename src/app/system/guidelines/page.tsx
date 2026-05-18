@@ -8,7 +8,6 @@ const docs = [
   { filename: "PRODUCT.md", label: "Product Context" },
   { filename: "DESIGN.md", label: "Design System" },
   { filename: "AGENTS.md", label: "Agent Instructions" },
-  { filename: "FIGMA-DS.md", label: "Figma Parity" },
 ];
 
 const dos = [
@@ -189,13 +188,14 @@ export default function GuidelinesPage() {
         subtitle="Reflex rules. When in doubt, look here before generating."
       />
 
-      <Section label="Internal references">
-        <div className="flex flex-wrap gap-3">
-          {docs.map((doc) => (
-            <MarkdownViewer key={doc.filename} {...doc} />
-          ))}
-        </div>
-      </Section>
+      <div className="mb-6 flex flex-wrap items-center gap-2 md:mb-8">
+        <span className="mr-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+          Internal references
+        </span>
+        {docs.map((doc) => (
+          <MarkdownViewer key={doc.filename} {...doc} />
+        ))}
+      </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
         <div className="flex flex-col gap-3">
